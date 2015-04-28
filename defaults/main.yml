@@ -1,0 +1,6 @@
+---
+
+nvm_version: "v0.24.1"
+nvm_node_version: "0.12.2"
+nvm_user: vagrant
+nvm_npm_pkgs: []
