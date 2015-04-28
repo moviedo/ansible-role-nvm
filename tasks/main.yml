@@ -1,0 +1,8 @@
+---
+
+- include: nvm.yml
+
+- include: node.yml
+
+- include: pkgs.yml
+  when: "{{ nvm_npm_pkgs | length }} > 0"

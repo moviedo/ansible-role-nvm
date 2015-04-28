@@ -1,0 +1,32 @@
+---
+
+- name: get stats on nvm
+  stat: path="{{ nvm_dest }}"
+  register: nvm_stat
+
+- name: create .nvm directory
+  file:
+    path: "{{ nvm_dest }}"
+    group: "{{ nvm_user }}"
+    owner: "{{ nvm_user }}"
+    mode: "u=rwxr,g=xr,o=x"
+    recurse: yes
+    state: directory
+  when: not nvm_stat.stat.exists
+
+- name: download nvm script
+  get_url:
+    dest: "{{ nvm_dest }}"
+    url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
+
+- name: update nvm file permission
+  file:
+    path: "{{ nvm_dest }}/nvm.sh"
+    group: "{{ nvm_user }}"
+    owner: "{{ nvm_user }}"
+    mode: 777
+    state: file
+  when: not nvm_stat.stat.exists
+
+- name: add nvm to ~/.bashrc
+  lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"

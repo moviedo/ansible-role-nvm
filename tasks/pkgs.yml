@@ -1,0 +1,10 @@
+---
+
+- name: install npm module(s)
+  npm:
+    name: "{{ item.pkg }}"
+    state: present
+    version: "{{ item.version }}"
+    executable: "{{ nvm_dest }}/versions/node/v{{ nvm_node_version }}/bin/npm"
+    global: yes
+  with_items: nvm_npm_pkgs
