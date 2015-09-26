@@ -1,0 +1,39 @@
+---
+language: python
+python: "2.7"
+
+# whitelist
+branches:
+  only:
+    - master
+    - develop
+
+# used to test against multiple versions of ansible
+env:
+  - ANSIBLE_VERSION=1.6
+  # - ANSIBLE_VERSION=1.7
+  # - ANSIBLE_VERSION=1.8
+  - ANSIBLE_VERSION=1.9
+
+before_install:
+  # update ubuntu packages
+  - sudo apt-get update -qq
+
+install:
+  - pip install -q ansible==$ANSIBLE_VERSION
+
+before_script:
+  # uninstall nvm
+  -
+  # check that nvm has been uninstalled
+  -
+    
+script:
+  # create an inventory list
+  - echo localhost > inventory
+  # check for syntax error
+  - ansible-playbook -i inventory test.yml --syntax-check
+    
+after_script:
+  # test if nvm has been installed by ansible playbook
+  -
