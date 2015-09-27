@@ -29,9 +29,18 @@ before_script:
 script:
   # create an inventory list
   - echo localhost > inventory
-  # check for syntax error
-  - ansible-playbook -i inventory test.yml --syntax-check
+  # perform a syntax check on the playbook, but do not execute it
+  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+  # run role/playbook to check if ansible script works
+  - ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
+  # run the role/playbook again, testing idempotence
+  - >
+    ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
     
 after_script:
   # test if nvm has been installed by ansible playbook
+  - source ~/.bashrc && nvm --version
   
