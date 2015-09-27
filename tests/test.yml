@@ -9,5 +9,7 @@
       nvm_npm_pkgs:
         - pkg: bower
           version: 1.4.x
-        - pkg: brunch
-          version: "1.8.x"
+        - pkg: grunt-cli
+          version: "*"
+        - pkg: gulp
+          version: "*"
