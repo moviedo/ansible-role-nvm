@@ -1,13 +1,13 @@
 ---
-- hosts: localhost
+  
+- name: Install NVM on Travis-CI
+  hosts: localhost
   remote_user: root
   roles:
-  - role: nvm
-      nvm_user: vagrant
+    - role: nvm
+      nvm_user: root
       nvm_npm_pkgs:
-        - pkg: grunt-cli
-          version: "0.1.x"
         - pkg: bower
-          version: "1.4.x"
-        - pkg: gulp
-          version: "3.8.x"
+          version: 1.4.x
+        - pkg: brunch
+          version: "*"
