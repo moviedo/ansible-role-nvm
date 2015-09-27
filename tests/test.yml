@@ -4,10 +4,10 @@
   hosts: localhost
   remote_user: root
   roles:
-    - role: nvm
-      nvm_user: root
+    - role: ansible-role-nvm
+      nvm_user: travis
       nvm_npm_pkgs:
         - pkg: bower
           version: 1.4.x
         - pkg: brunch
-          version: "*"
+          version: "1.8.x"
