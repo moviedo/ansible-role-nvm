@@ -9,7 +9,7 @@
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
     owner: "{{ nvm_user }}"
-    mode: "u=rwxr,g=xr,o=x"
+    mode: 0755
     recurse: yes
     state: directory
   when: not nvm_stat.stat.exists
@@ -24,7 +24,7 @@
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
     owner: "{{ nvm_user }}"
-    mode: "u=rwxr,g=xr,o=x"
+    mode: 0755
     recurse: yes
     state: directory
 
