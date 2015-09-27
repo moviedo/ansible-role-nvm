@@ -23,11 +23,9 @@ install:
   - pip install -q ansible==$ANSIBLE_VERSION
 
 before_script:
-  # uninstall nvm
-  -
-  # check that nvm has been uninstalled
-  -
-    
+  # remove nvm file
+  - sudo rm -r ~/.nvm
+
 script:
   # create an inventory list
   - echo localhost > inventory
@@ -36,4 +34,4 @@ script:
     
 after_script:
   # test if nvm has been installed by ansible playbook
-  -
+  
