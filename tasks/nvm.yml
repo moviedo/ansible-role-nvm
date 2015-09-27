@@ -19,14 +19,14 @@
     dest: "{{ nvm_dest }}"
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
 
-- name: update nvm file permission
+- name: update .nvm dir permission
   file:
-    path: "{{ nvm_dest }}/nvm.sh"
+    path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
     owner: "{{ nvm_user }}"
-    mode: 777
-    state: file
-  when: not nvm_stat.stat.exists
+    mode: "u=rwxr,g=xr,o=x"
+    recurse: yes
+    state: directory
 
 - name: add nvm to ~/.bashrc
   lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"
