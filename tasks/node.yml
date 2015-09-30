@@ -9,3 +9,8 @@
   args:
      executable: /bin/bash
   when: not node_stat.stat.exists
+
+- name: set default Node version {{ nvm_node_version }} to be used in new shell
+  shell: "source {{nvm_dest}}/nvm.sh && nvm alias default {{nvm_node_version}}"
+  args:
+     executable: /bin/bash
