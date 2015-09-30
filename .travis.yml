@@ -43,4 +43,10 @@ script:
 after_script:
   # test if nvm has been installed by ansible playbook
   - source ~/.bashrc && nvm --version
+  # test if nvm has set node version to default
+  - >
+    source ~/.bashrc && nvm list
+    | grep -q 'default -> 0.12 (-> v0.12.2)'
+    && (echo 'NVM default node: pass' && exit 0)
+    || (echo 'NVM default node: fail' && exit 1)
   
