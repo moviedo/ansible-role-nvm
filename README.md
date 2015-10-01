@@ -50,7 +50,11 @@ Example Playbook
               version: "*"
             - pkg: gulp
               version: "*"
-        
+
+Other Information
+-----------------
+
+This role will also run `nvm alais default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
 
 License
 -------
