@@ -2,7 +2,7 @@ Ansible Role: NVM
 =========
 
 [![Join the chat at https://gitter.im/moviedo/ansible-role-nvm](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/moviedo/ansible-role-nvm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/moviedo/ansible-role-nvm.svg?branch=master)](https://travis-ci.org/moviedo/ansible-role-nvm)
+[![Build Status](https://travis-ci.org/moviedo/ansible-role-nvm.svg?branch=develop)](https://travis-ci.org/moviedo/ansible-role-nvm)
 
 This ansible role is used to install NVM, Node Version Manager, locally within a linux box.
 
