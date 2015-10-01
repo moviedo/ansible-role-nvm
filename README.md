@@ -21,7 +21,7 @@ Required Variables
 Optional Variables
 
   * `nvm_version: "v0.24.1"` NVM version to install on remote machine, it defaults to `v0.24.1`. You must specify a distinct NVM version, do NOT use wild cards (i.e. `v0.24.x`).
-  * `nvm_node_version: "0.12.2"` Node version to install on the remote machine, it defaults to `0.12.2`.
+  * `nvm_node_version: "0.12.2"` Node version to install on the remote machine, it defaults to `0.12.2`. You must specify a distinct node version, do NOT use wild cards (i.e. `0.12.x`).
   * `nvm_npm_pkgs: []` A list of **global** npm packages to be installed on remote machine. It defaults to an empty list. Packages should be yaml dictionary with keys `pkg`, representing the package name, and `version`, representing the package version, as shown below.
   ```
   nvm_npm_pkgs:
