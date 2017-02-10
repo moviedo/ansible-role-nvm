@@ -6,14 +6,16 @@ python: "2.7"
 branches:
   only:
     - master
-    - develop
 
 # used to test against multiple versions of ansible
 env:
   - ANSIBLE_VERSION="1.6.*"
-  # - ANSIBLE_VERSION="1.7.*"
-  # - ANSIBLE_VERSION="1.8.*"
+  - ANSIBLE_VERSION="1.7.*"
+  - ANSIBLE_VERSION="1.8.*"
   - ANSIBLE_VERSION="1.9.*"
+  - ANSIBLE_VERSION="2.0.*"
+  - ANSIBLE_VERSION="2.1.*"
+  - ANSIBLE_VERSION="2.2.*"
 
 before_install:
   # update ubuntu packages
@@ -39,7 +41,7 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-    
+
 after_script:
   # test if nvm has been installed by ansible playbook
   - source ~/.bashrc && nvm --version
@@ -49,4 +51,3 @@ after_script:
     | grep -q 'default -> 0.12 (-> v0.12.2)'
     && (echo 'NVM default node: pass' && exit 0)
     || (echo 'NVM default node: fail' && exit 1)
-  
