@@ -20,8 +20,8 @@ Required Variables
 
 Optional Variables
 
-  * `nvm_version: "v0.24.1"` NVM version to install on remote machine, it defaults to `v0.24.1`. You must specify a distinct NVM version, do NOT use wild cards (i.e. `v0.24.x`).
-  * `nvm_node_version: "0.12.2"` Node version to install on the remote machine, it defaults to `0.12.2`. You must specify a distinct node version, do NOT use wild cards (i.e. `0.12.x`).
+  * `nvm_version: "v0.33.0"` NVM version to install on remote machine, it defaults to `v0.33.0`. You must specify a distinct NVM version, do NOT use wild cards (i.e. `v0.24.x`).
+  * `nvm_node_version: "6.9.5"` Node version to install on the remote machine, it defaults to `6.9.5`. You must specify a distinct node version, do NOT use wild cards (i.e. `6.9.x`).
   * `nvm_npm_pkgs: []` A list of **global** npm packages to be installed on remote machine. It defaults to an empty list. Packages should be yaml dictionary with keys `pkg`, representing the package name, and `version`, representing the package version, as shown below.
   ```
   nvm_npm_pkgs:
@@ -41,14 +41,14 @@ Example Playbook
       roles:
       - role: nvm
           nvm_user: vagrant
-          nvm_version: "v0.24.1"
-          nvm_node_version: "0.12.2"
+          nvm_version: "v0.33.0"
+          nvm_node_version: "6.9.5"
           nvm_npm_pkgs:
             - pkg: bower
               version: 1.4.x
-            - pkg: grunt-cli
+            - pkg: brunch
               version: "*"
-            - pkg: gulp
+            - pkg: yarn
               version: "*"
 
 Other Information
