@@ -1,6 +1,6 @@
 ---
 
-nvm_version: "v0.27.1"
-nvm_node_version: "0.12.2"
+nvm_version: "v0.33.0"
+nvm_node_version: "6.9.5"
 nvm_user: vagrant
 nvm_npm_pkgs: []
