@@ -48,6 +48,6 @@ after_script:
   # test if nvm has set node version to default
   - >
     source ~/.bashrc && nvm list
-    | grep -q 'default -> 0.12 (-> v0.12.2)'
+    | grep -q 'default -> 6.9.5 (-> v6.9.5)'
     && (echo 'NVM default node: pass' && exit 0)
     || (echo 'NVM default node: fail' && exit 1)
