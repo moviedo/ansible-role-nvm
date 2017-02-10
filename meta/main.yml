@@ -73,6 +73,7 @@ galaxy_info:
         - raring
         - saucy
         - trusty
+        - xenial
     # - name: SLES
     #   versions:
     #     - all
@@ -93,7 +94,7 @@ galaxy_info:
     #     - lenny
     #     - squeeze
     #     - wheezy
-        
+
   # Below are all categories currently available. Just as with
   # the platforms above, uncomment those that apply to your role.
   categories:
