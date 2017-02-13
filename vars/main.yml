@@ -2,9 +2,3 @@
 
 nvm_working_path: "/home/{{ nvm_user }}"
 nvm_dest: "{{ nvm_working_path }}/.nvm"
-
-required_packages:
-  - build-essential
-  - git
-  - curl
-  - libssl-dev
