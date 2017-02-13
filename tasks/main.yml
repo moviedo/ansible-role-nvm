@@ -1,8 +1,8 @@
 ---
-  
+
 - name: Install Required Packages
   apt: name={{ item }} state=installed update_cache=yes
-  with_items: required_packages
+  with_items: "{{ required_packages }}"
 
 - include: nvm.yml
 
