@@ -3,7 +3,7 @@ galaxy_info:
   author: Mauro Oviedo
   description: Ansible role is used to install NVM, Node Version Manager, within a linux environment. Use it to install different and multiple versions Nodejs and IOjs.
   license: license MIT
-  min_ansible_version: 1.6
+  min_ansible_version: 1.8
   #
   # Below are all platforms currently available. Just uncomment
   # the ones that apply to your role. If you don't see your
