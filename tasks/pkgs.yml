@@ -5,7 +5,7 @@
   with_items: "{{nvm_npm_pkgs}}"
   args:
     executable: /bin/bash
-    creates: "{{nvm_dest}}/versions/node/v{{nvm_node_version}}/bin/{{item.pkg}}"
+    creates: "{{nvm_dest}}/versions/node/v{{nvm_node_version}}/lib/node_modules/{{item.pkg}}"
 
 # not working in ansible 2.2; module still in preview
 # - name: install npm module(s)
