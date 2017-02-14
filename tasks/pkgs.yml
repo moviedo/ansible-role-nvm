@@ -1,10 +1,18 @@
 ---
 
-- name: install npm module(s)
-  npm:
-    name: "{{ item.pkg }}"
-    state: present
-    version: "{{ item.version }}"
-    executable: "{{ nvm_dest }}/versions/node/v{{ nvm_node_version }}/bin/npm"
-    global: yes
-  with_items: nvm_npm_pkgs
+- name: NVM | install npm module(s)
+  shell: "source {{ nvm_dest }}/nvm.sh && nvm use v{{ nvm_node_version }} && {{ nvm_dest }}/versions/node/v{{ nvm_node_version }}/bin/npm install -g {{ item.pkg }}@{{ item.version }}"
+  with_items: "{{nvm_npm_pkgs}}"
+  args:
+    executable: /bin/bash
+    creates: "{{nvm_dest}}/versions/node/v{{nvm_node_version}}/bin/{{item.pkg}}"
+
+# not working in ansible 2.2
+# - name: install npm module(s)
+#   npm:
+#     name: "{{ item.pkg }}"
+#     state: present
+#     version: "{{ item.version }}"
+#     executable: "{{ nvm_dest }}/versions/node/v{{ nvm_node_version }}/bin/npm"
+#     global: yes
+#   with_items: "{{nvm_npm_pkgs}}"
