@@ -1,6 +1,6 @@
 ---
 
-- name: Install Required Packages
+- name: NVM | main | Install Required Packages
   apt: name={{ item }} state=installed update_cache=yes
   with_items: "{{ required_packages }}"
 

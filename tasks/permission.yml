@@ -1,6 +1,6 @@
 ---
-  
-- name: update .nvm dir permission
+
+- name: NVM | permission | update .nvm dir permission
   file:
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
