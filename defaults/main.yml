@@ -3,8 +3,10 @@
 nvm_version: "v0.33.0"
 nvm_node_version: "6.9.5"
 nvm_user: vagrant
-nvm_npm_pkgs: []
+nvm_working_path: "/home/{{ nvm_user }}"
+nvm_dest: "{{ nvm_working_path }}/.nvm"
 
+nvm_npm_pkgs: []
 required_packages:
   - git
   - curl
