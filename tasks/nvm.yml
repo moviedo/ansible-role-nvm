@@ -21,5 +21,11 @@
 
 - include: permission.yml
 
+- name: NVM | nvm | ensure ~/.bashrc exists
+  copy: 
+    content: "" 
+    dest: "{{ nvm_working_path }}/.bashrc" 
+    force: no
+
 - name: NVM | nvm | add nvm to ~/.bashrc
   lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"
