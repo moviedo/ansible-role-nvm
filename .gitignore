@@ -65,4 +65,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Vagrant ###
+.vagrant/
+
 # End of https://www.gitignore.io/api/windows,osx,linux
