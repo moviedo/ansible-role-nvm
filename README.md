@@ -56,10 +56,25 @@ Other Information
 
 This role will also run `nvm alais default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
 
+Testing
+-------
+
+This project comes with a Vagrantfile, this is a fast and easy way to test changes to the role, fire it up with `vagrant up --provision`.
+
+See [vagrant docs](https://docs.vagrantup.com/v2/) for getting setup with vagrant
+
+Once your VM is up, you can re-provision it using `vagrant provision`.
+
+If you want to toy with the test play, see [tests/playbook.yml](./tests/playbook.yml), and change the variables in [tests/vars.yml](./tests/vars.yml)
+
+If you are contributing, please first test your changes within the vagrant environment, (using at least one of the targeted distribution(s) ubuntu/xenial64), and if possible, ensure your change is covered in the tests found in [.travis.yml](./.travis.yml)
+
+If you wish to change the Vagrant OS distribution, please update `config.vm.box`, this can be found in the accompanying [Vagrantfile](./Vagrantfile).
+
 License
 -------
 
-MIT
+Licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 Author Information
 ------------------
