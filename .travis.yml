@@ -30,9 +30,9 @@ script:
   # create an inventory list
   - echo localhost > inventory
   # perform a syntax check on the playbook, but do not execute it
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+  - ansible-playbook -i inventory tests/test.yml --syntax-check
   # run role/playbook to check if ansible script works
-  - ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
+  - ansible-playbook -i inventory tests/test.yml -c local --sudo
   # run the role/playbook again, testing idempotence
   - >
     ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
