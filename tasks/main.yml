@@ -9,7 +9,7 @@
 - include: node.yml
 
 - include: pkgs.yml
-  when: "{{ nvm_npm_pkgs | length }} > 0"
+  when: nvm_npm_pkgs | length  > 0
 
 # needed in order to preserve idempotency due to globally installed packages
 - include: permission.yml
