@@ -1,6 +1,7 @@
 ---
 
 - name: NVM | main | Install Required Packages
+  become: "{{ nvm_apt_become }}"
   apt:
     update_cache: yes
     state: present
