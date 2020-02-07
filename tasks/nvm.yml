@@ -1,10 +1,11 @@
 ---
 
-- name: NVM | nvm | get stats on nvm
-  stat: path="{{ nvm_dest }}"
+- name: NVM | nvm | get stats on nvm destination
+  stat:
+    path: "{{ nvm_dest }}"
   register: nvm_stat
 
-- name:  NVM | nvm | create .nvm directory
+- name: NVM | nvm | create .nvm directory
   file:
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
@@ -17,7 +18,12 @@
 - name: NVM | nvm | download nvm script
   get_url:
     dest: "{{ nvm_dest }}"
+    group: "{{ nvm_user }}"
+    owner: "{{ nvm_user }}"
+    mode: 0755
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
 
 - name: NVM | nvm | add nvm to ~/.bashrc
-  lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"
+  lineinfile:
+    path: "{{ nvm_working_path }}/.bashrc"
+    line: "source ~/.nvm/nvm.sh"
