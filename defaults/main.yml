@@ -3,7 +3,6 @@
 nvm_version: "v0.35.2"
 nvm_node_version: "12.14.1"
 nvm_user: vagrant
-nvm_npm_pkgs: []
 
 required_packages:
   - git

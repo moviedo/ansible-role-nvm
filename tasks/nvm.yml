@@ -19,7 +19,5 @@
     dest: "{{ nvm_dest }}"
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
 
-- include: permission.yml
-
 - name: NVM | nvm | add nvm to ~/.bashrc
   lineinfile: dest="{{ nvm_working_path }}/.bashrc" line="source ~/.nvm/nvm.sh"
