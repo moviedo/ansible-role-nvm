@@ -16,7 +16,7 @@ Role Variables
 
 Required Variables
 
-  * `nvm_user` Remote user. This value defaults to 'vagrant'.
+  * `nvm_user` This should be the remote user that will use NVM. This value defaults to 'vagrant'.
 
 Optional Variables
 
@@ -31,7 +31,7 @@ No dependencies.
 Example Playbook
 ----------------
 
-    - hosts: server
+    - hosts: all
       roles:
       - role: moviedo.nvm
           nvm_user: vagrant
