@@ -81,6 +81,7 @@ Information on what commands to run in order to test locally.
 ##### Tox Commands
 
 Run `tox --parallel auto` to test changes against the different ansible version that this role supports.
+**Warning**: taking a few minutes to run all tests.
 
 
 License
