@@ -1,5 +1,6 @@
 import os
 import pytest
+import re
 import testinfra.utils.ansible_runner as ansible_runner
 
 testinfra_hosts = ansible_runner.AnsibleRunner(
@@ -43,3 +44,27 @@ def test_nvm_file_has_correct_permissions(host):
     assert f.user == 'ansible'
     assert f.group == 'ansible'
     assert f.mode == 0o755
+
+
+def test_profile_lines_exists(host):
+    f = host.file('/home/ansible/.bashrc')
+
+    regex = r"\[ -s \"\$NVM_DIR/nvm\.sh\" ] && \\\. \"\$NVM_DIR/nvm\.sh\""
+    result = re.search(regex, f.content_string)
+    assert result is not None
+
+    regex = r'export NVM_DIR=\"\$\(\[ -z \"\${XDG_CONFIG_HOME-}\" ] && printf %s \"\${HOME}/\.nvm\" \|\| printf %s \"\${XDG_CONFIG_HOME}/nvm\"\)\"'
+    result = re.search(regex, f.content_string)
+    assert result is not None
+
+
+def test_node_version_installed(host):
+    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1")
+
+    assert f.exists
+    assert f.is_directory
+
+    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1/bin/node")
+
+    assert f.exists
+    assert f.is_file
