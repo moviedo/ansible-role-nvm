@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 120
+exclude = .tox,.git
+
+per-file-ignores =
+    molecule/default/tests/test_default.py: E501
