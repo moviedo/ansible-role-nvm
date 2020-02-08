@@ -43,6 +43,46 @@ Other Information
 
 This role will also run `nvm alais default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
 
+
+Contributing
+-----------------
+
+Information on how to contribute to the project.
+
+### Setup
+How to setup the project for local development.
+
+1. Install [docker](https://docs.docker.com/docker-for-mac/install/)
+1. Install project dependencies with [pipenv](https://pipenv.readthedocs.io/en/latest/) and run `pipenv install`.
+
+### Workflow
+
+1. Fork the repo.
+1. Make your desired changes.
+1. Write your testz in the molecule/default/test/test_default.py file or add test in a different file if needed.
+1. Test said desired changes using [molecule](https://motlecule.readthedocs.io/en/latest/).
+
+    Molecule is used to test again different OS platforms(i.e. ubuntu, centos, etc).
+
+1. Test against multiple ansible versions with [tox](https://tox.readthedocs.io/en/latest/).
+1. Make a merge request to the project.
+
+Check the testing section for more info on commands to run for testing locally.
+
+### Testing Locally
+
+Information on what commands to run in order to test locally.
+
+#### Molecule Cammnads
+
+1. Run the `molecule test` command to test the all scenarios.
+1. Run the `molecule verify` to test against the [testinfra](https://testinfra.readthedocs.io/en/latest/index.html) test. Used to verify that the role makes the desired changes against the docker images.
+
+##### Tox Commands
+
+Run `tox --parallel` to test changes against the different ansible version that this role supports.
+
+
 License
 -------
 
