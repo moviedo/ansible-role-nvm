@@ -23,7 +23,12 @@
     mode: 0755
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
 
-- name: NVM | nvm | add nvm to ~/.bashrc
+- name: NVM | nvm | add nvm line 1 to ~/.bashrc
   lineinfile:
     path: "{{ nvm_working_path }}/.bashrc"
-    line: "source ~/.nvm/nvm.sh"
+    line: export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+
+- name: NVM | nvm | add nvm line 2 to ~/.bashrc
+  lineinfile:
+    path: "{{ nvm_working_path }}/.bashrc"
+    line: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
