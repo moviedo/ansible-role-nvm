@@ -60,7 +60,7 @@ How to setup the project for local development.
 1. Fork the repo.
 1. Make your desired changes.
 1. Write your testz in the molecule/default/test/test_default.py file or add test in a different file if needed.
-1. Test said desired changes using [molecule](https://motlecule.readthedocs.io/en/latest/).
+1. Test said desired changes using [molecule](https://molecule.readthedocs.io/en/latest/).
 
     Molecule is used to test again different OS platforms(i.e. ubuntu, centos, etc).
 
