@@ -1,53 +1,21 @@
 ---
 language: python
-python: "2.7"
+sudo: required
 
 # whitelist
 branches:
   only:
     - master
 
-# used to test against multiple versions of ansible
-env:
-  - ANSIBLE_VERSION="1.6.*"
-  - ANSIBLE_VERSION="1.7.*"
-  - ANSIBLE_VERSION="1.8.*"
-  - ANSIBLE_VERSION="1.9.*"
-  - ANSIBLE_VERSION="2.0.*"
-  - ANSIBLE_VERSION="2.1.*"
-  - ANSIBLE_VERSION="2.2.*"
+services:
+  - docker
 
 before_install:
   # update ubuntu packages
-  - sudo apt-get update -qq
+  - sudo apt-get -qq update
 
 install:
-  - pip install -q ansible==$ANSIBLE_VERSION
-
-before_script:
-  # remove nvm file
-  - sudo rm -r ~/.nvm
+  - pip install tox-travis
 
 script:
-  # create an inventory list
-  - echo localhost > inventory
-  # perform a syntax check on the playbook, but do not execute it
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
-  # run role/playbook to check if ansible script works
-  - ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
-  # run the role/playbook again, testing idempotence
-  - >
-    ansible-playbook -i tests/inventory tests/test.yml -c local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-after_script:
-  # test if nvm has been installed by ansible playbook
-  - source ~/.bashrc && nvm --version
-  # test if nvm has set node version to default
-  - >
-    source ~/.bashrc && nvm list
-    | grep -q 'default -> 6.9.5 (-> v6.9.5)'
-    && (echo 'NVM default node: pass' && exit 0)
-    || (echo 'NVM default node: fail' && exit 1)
+  - tox
