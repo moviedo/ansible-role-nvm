@@ -6,14 +6,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: ubuntu1804
+  - name: ubuntu1804-$TOX_ENVNAME
     image: "percygrunwald/docker-ubuntu1804-ansible:latest"
     command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: ubuntu1604
+  - name: ubuntu1604-$TOX_ENVNAME
     image: "percygrunwald/docker-ubuntu1604-ansible:latest"
     command: ""
     volumes:

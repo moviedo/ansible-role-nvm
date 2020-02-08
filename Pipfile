@@ -7,7 +7,9 @@ verify_ssl = true
 
 [packages]
 ansible-lint = "==4.*"
-molecule = {extras = ["docker"],version = "==2.*"}
+molecule = "==2.*"
+docker = "==4.*"
+tox = "==3.*"
 
 [requires]
 python_version = "3.7"
