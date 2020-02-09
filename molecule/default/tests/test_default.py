@@ -1,5 +1,4 @@
 import os
-import pytest
 import re
 import testinfra.utils.ansible_runner as ansible_runner
 
@@ -8,12 +7,6 @@ testinfra_hosts = ansible_runner.AnsibleRunner(
 ).get_hosts('all')
 
 NVM_DEST = "/home/ansible/.nvm"
-
-
-@pytest.mark.parametrize("item", ["git", "curl", "libssl-dev"])
-def test_pkg_installed(host, item):
-    pkg = host.package(item)
-    assert pkg.is_installed
 
 
 def test_nvm_dirctory_created(host):
@@ -59,12 +52,12 @@ def test_profile_lines_exists(host):
 
 
 def test_node_version_installed(host):
-    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1")
+    f = host.file("/home/ansible/.nvm/versions/node/v11.15.0")
 
     assert f.exists
     assert f.is_directory
 
-    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1/bin/node")
+    f = host.file("/home/ansible/.nvm/versions/node/v11.15.0/bin/node")
 
     assert f.exists
     assert f.is_file

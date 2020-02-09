@@ -1,0 +1,7 @@
+---
+
+- name: NVM | setup-Debian | Install Required Packages
+  apt:
+    name: "{{ shared_packages | union(debian_packages) }}"
+    update_cache: yes
+  become: yes
