@@ -4,10 +4,15 @@ nvm_version: "v0.35.2"
 nvm_node_version: "12.14.1"
 nvm_user: vagrant
 
-required_packages:
+shared_packages:
   - git
   - curl
+
+debian_packages:
   - libssl-dev
+
+redhat_packages:
+  - openssl-devel
 
 nvm_working_path: "/home/{{ nvm_user }}"
 nvm_dest: "{{ nvm_working_path }}/.nvm"
