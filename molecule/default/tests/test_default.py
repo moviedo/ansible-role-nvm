@@ -10,12 +10,6 @@ testinfra_hosts = ansible_runner.AnsibleRunner(
 NVM_DEST = "/home/ansible/.nvm"
 
 
-@pytest.mark.parametrize("item", ["git", "curl", "libssl-dev"])
-def test_pkg_installed(host, item):
-    pkg = host.package(item)
-    assert pkg.is_installed
-
-
 def test_nvm_dirctory_created(host):
     f = host.file(NVM_DEST)
 
