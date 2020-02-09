@@ -1,15 +1,11 @@
 ---
 
 - name: NVM | main | Install Required Packages
-  apt: name={{ item }} state=installed update_cache=yes
-  with_items: "{{ required_packages }}"
+  apt:
+    name: "{{ required_packages }}"
+    update_cache: yes
+  become: yes
 
 - include: nvm.yml
 
 - include: node.yml
-
-- include: pkgs.yml
-  when: nvm_npm_pkgs | length  > 0
-
-# needed in order to preserve idempotency due to globally installed packages
-- include: permission.yml

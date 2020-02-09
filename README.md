@@ -16,18 +16,12 @@ Role Variables
 
 Required Variables
 
-  * `nvm_user` Remote user. This value defaults to 'vagrant'.
+  * `nvm_user` This should be the remote user that will use NVM. This value defaults to 'vagrant'.
 
 Optional Variables
 
-  * `nvm_version: "v0.33.0"` NVM version to install on remote machine, it defaults to `v0.33.0`. You must specify a distinct NVM version, do NOT use wild cards (i.e. `v0.24.x`).
-  * `nvm_node_version: "6.9.5"` Node version to install on the remote machine, it defaults to `6.9.5`. You must specify a distinct node version, do NOT use wild cards (i.e. `6.9.x`).
-  * `nvm_npm_pkgs: []` A list of **global** npm packages to be installed on remote machine. It defaults to an empty list. Packages should be yaml dictionary with keys `pkg`, representing the package name, and `version`, representing the package version, as shown below.
-  ```
-  nvm_npm_pkgs:
-    - pkg: bower
-      version: 1.4.x
-  ```
+  * `nvm_version: "v0.35.2"` NVM version to install on remote machine, it defaults to `v0.35.2`. You must specify a distinct NVM version, do **NOT** use wild cards (i.e. `v0.24.x`).
+  * `nvm_node_version: "12.14.1"` Node version to install on the remote machine, it defaults to `12.14.1`. You must specify a distinct node version, do **NOT** use wild cards (i.e. `12.14.x`).
 
 Dependencies
 ------------
@@ -37,44 +31,63 @@ No dependencies.
 Example Playbook
 ----------------
 
-    - hosts: server
+    - hosts: all
       roles:
-      - role: nvm
+      - role: moviedo.nvm
           nvm_user: vagrant
-          nvm_version: "v0.33.0"
-          nvm_node_version: "6.9.5"
-          nvm_npm_pkgs:
-            - pkg: bower
-              version: 1.4.x
-            - pkg: brunch
-              version: "*"
-            - pkg: yarn
-              version: "*"
+          nvm_version: "v0.35.2"
+          nvm_node_version: "12.14.1"
 
 Other Information
 -----------------
 
 This role will also run `nvm alais default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
 
-Testing
--------
 
-This project comes with a Vagrantfile, this is a fast and easy way to test changes to the role, fire it up with `vagrant up`.
+Contributing
+-----------------
 
-See [vagrant docs](https://docs.vagrantup.com/v2/) for getting setup with vagrant.
+Information on how to contribute to the project.
 
-Once your VM is up, you can provision the VM using `vagrant provision` or `vagrant up --provision`.
+### Setup
+How to setup the project for local development.
 
-If you want to toy with the test play, see [tests/playbook.yml](./tests/playbook.yml), and change the variables in [tests/vars.yml](./tests/vars.yml).
+1. Install [docker](https://docs.docker.com/docker-for-mac/install/)
+1. Install project dependencies with [pipenv](https://pipenv.readthedocs.io/en/latest/) and run `pipenv install`.
 
-If you are contributing, please first test your changes within the vagrant environment, (using at least one of the targeted distribution(s) ubuntu/xenial64), and if possible, ensure your change is covered in the tests found in [.travis.yml](./.travis.yml) if applicable.
+### Workflow
 
-If you wish to change the Vagrant OS distribution, please update `config.vm.box`, this can be found in the accompanying [Vagrantfile](./Vagrantfile).
+1. Fork the repo.
+1. Make your desired changes.
+1. Write your testz in the molecule/default/test/test_default.py file or add test in a different file if needed.
+1. Test said desired changes using [molecule](https://molecule.readthedocs.io/en/latest/).
+
+    Molecule is used to test again different OS platforms(i.e. ubuntu, centos, etc).
+
+1. Test against multiple ansible versions with [tox](https://tox.readthedocs.io/en/latest/).
+1. Make a merge request to the project.
+
+Check the testing section for more info on commands to run for testing locally.
+
+### Testing Locally
+
+Information on what commands to run in order to test locally.
+
+#### Molecule Cammnads
+
+1. Run the `molecule test` command to test the all scenarios.
+1. Run the `molecule verify` to test against the [testinfra](https://testinfra.readthedocs.io/en/latest/index.html) test. Used to verify that the role makes the desired changes against the docker images.
+
+##### Tox Commands
+
+Run `tox --parallel auto` to test changes against the different ansible version that this role supports.
+**Warning**: taking a few minutes to run all tests.
+
 
 License
 -------
 
-Licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+MIT
 
 Author Information
 ------------------

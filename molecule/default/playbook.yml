@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_user: ansible
+  roles:
+    - role: ansible-role-nvm
+      nvm_user: ansible
