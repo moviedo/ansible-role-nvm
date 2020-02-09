@@ -1,10 +1,10 @@
 ---
 
-- name: NVM | main | Install Required Packages
-  apt:
-    name: "{{ required_packages }}"
-    update_cache: yes
-  become: yes
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
 
 - include: nvm.yml
 
