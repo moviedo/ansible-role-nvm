@@ -53,12 +53,12 @@ def test_profile_lines_exists(host):
 
 
 def test_node_version_installed(host):
-    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1")
+    f = host.file("/home/ansible/.nvm/versions/node/v11.15.0")
 
     assert f.exists
     assert f.is_directory
 
-    f = host.file("/home/ansible/.nvm/versions/node/v12.14.1/bin/node")
+    f = host.file("/home/ansible/.nvm/versions/node/v11.15.0/bin/node")
 
     assert f.exists
     assert f.is_file

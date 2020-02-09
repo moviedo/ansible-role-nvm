@@ -6,3 +6,4 @@
   roles:
     - role: ansible-role-nvm
       nvm_user: ansible
+      nvm_node_version: "11.15.0"
