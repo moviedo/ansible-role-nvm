@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  name: nvm
   author: Mauro Oviedo
   description: Install NVM, Node Version Manager, within a linux environment.
   license: license MIT
