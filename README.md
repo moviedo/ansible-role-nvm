@@ -18,6 +18,8 @@ Required Variables
 
   * `nvm_user` This should be the remote user that will use NVM. This value defaults to 'vagrant'.
 
+  * `nvm_group` This optional variable is the remote group that will be used to setup permissions. If undefined, will fallback to `nvm_user`.
+
 Optional Variables
 
   * `nvm_version: "v0.35.2"` NVM version to install on remote machine, it defaults to `v0.35.2`. You must specify a distinct NVM version, do **NOT** use wild cards (i.e. `v0.24.x`).
