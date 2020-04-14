@@ -95,3 +95,14 @@ Author Information
 ------------------
 
 Mauro Oviedo (aka moviedo)
+
+Contributors
+------------------
+
+[sylvainmetayer](https://github.com/sylvainmetayer)
+
+[jminuscula](https://github.com/jminuscula)
+
+[alonisser](https://github.com/alonisser)
+
+[senorsmile](https://github.com/senorsmile)
