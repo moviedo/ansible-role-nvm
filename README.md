@@ -18,6 +18,8 @@ Required Variables
 
   * `nvm_user` This should be the remote user that will use NVM. This value defaults to 'vagrant'.
 
+  * `nvm_group` This optional variable is the remote group that will be used to setup permissions. If undefined, will fallback to `nvm_user`.
+
 Optional Variables
 
   * `nvm_version: "v0.35.2"` NVM version to install on remote machine, it defaults to `v0.35.2`. You must specify a distinct NVM version, do **NOT** use wild cards (i.e. `v0.24.x`).
@@ -41,7 +43,7 @@ Example Playbook
 Other Information
 -----------------
 
-This role will also run `nvm alais default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
+This role will also run `nvm alias default` on the specified *nvm_node_version* to [set a default Node version to be used in any new shell](https://github.com/creationix/nvm).
 
 
 Contributing
@@ -59,7 +61,7 @@ How to setup the project for local development.
 
 1. Fork the repo.
 1. Make your desired changes.
-1. Write your testz in the molecule/default/test/test_default.py file or add test in a different file if needed.
+1. Write your tests in the molecule/default/test/test_default.py file or add test in a different file if needed.
 1. Test said desired changes using [molecule](https://molecule.readthedocs.io/en/latest/).
 
     Molecule is used to test again different OS platforms(i.e. ubuntu, centos, etc).

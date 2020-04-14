@@ -1,5 +1,4 @@
 ---
-
 - name: NVM | nvm | get stats on nvm destination
   stat:
     path: "{{ nvm_dest }}"
@@ -8,7 +7,7 @@
 - name: NVM | nvm | create .nvm directory
   file:
     path: "{{ nvm_dest }}"
-    group: "{{ nvm_user }}"
+    group: "{{ nvm_group | default(nvm_user) }}"
     owner: "{{ nvm_user }}"
     mode: 0755
     recurse: yes
@@ -18,7 +17,7 @@
 - name: NVM | nvm | download nvm script
   get_url:
     dest: "{{ nvm_dest }}"
-    group: "{{ nvm_user }}"
+    group: "{{ nvm_group | default(nvm_user) }}"
     owner: "{{ nvm_user }}"
     mode: 0755
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh

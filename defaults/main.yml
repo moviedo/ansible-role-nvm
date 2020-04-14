@@ -3,6 +3,8 @@
 nvm_version: "v0.35.2"
 nvm_node_version: "12.14.1"
 nvm_user: vagrant
+# define if group is different from user
+#nvm_group:
 
 shared_packages:
   - git
@@ -14,5 +16,5 @@ debian_packages:
 redhat_packages:
   - openssl-devel
 
-nvm_working_path: "/home/{{ nvm_user }}"
-nvm_dest: "{{ nvm_working_path }}/.nvm"
+nvm_working_path: "~"
+nvm_dest: "~/.nvm"
